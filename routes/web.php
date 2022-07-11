@@ -18,5 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/series/lista', [SeriesController::class, 'index']);
-Route::get('/series/create', [SeriesController::class, 'create']);
+Route::resource('/series', SeriesController::class)
+    ->only(['index', 'create', 'store', 'destroy', 'update', 'edit']);
+
