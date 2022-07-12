@@ -10,7 +10,7 @@
             <li class="list-group-item d-flex justify-content-between">
                 {{ $serie->nome }}
 
-                <div>
+                <span class="d-flex">
                     <form action="{{ route('series.destroy', $serie->id) }}" method="post">
                         @csrf
                         @method('DELETE')
@@ -18,10 +18,8 @@
                             X
                         </button>
                     </form>
-                    <form action="{{ route('series.edit', $serie->id) }}" method="get">
-                        <button class="btn btn-primary btn-sm">Editar</button>
-                    </form>
-                </div>
+                    <a href="{{ route('series.edit', $serie->id) }}" method="get" class="btn btn-primary btn-sm ms-3">Editar</a>
+                </span>
             </li>
         @endforeach
     </ul>
