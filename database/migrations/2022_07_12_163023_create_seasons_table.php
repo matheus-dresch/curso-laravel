@@ -13,9 +13,17 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('series', function (Blueprint $table) {
+        Schema::create('seasons', function (Blueprint $table) {
             $table->id();
-            $table->string('name', 128);
+            $table->unsignedTinyInteger('number');
+
+            $table->foreignId('series_id')
+                ->constrained()
+                ->onDelete('cascade');
+
+            // $table->unsignedBigInteger('series_id'); ^^^^
+            // $table->foreign('series_id')->references('id')->on('series');
+
             $table->timestamps();
         });
     }
@@ -27,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('series');
+        Schema::dropIfExists('seasons');
     }
 };
