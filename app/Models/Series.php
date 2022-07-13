@@ -10,6 +10,8 @@ class Series extends Model
 {
     use HasFactory;
 
+    public $timestamps = false;
+
     protected $fillable = ['name'];
     // protected $with = ['season']; Sempre chama esse attr junto
 

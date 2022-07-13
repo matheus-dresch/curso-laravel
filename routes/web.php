@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\SeasonController;
 use App\Http\Controllers\SeriesController;
 use Illuminate\Support\Facades\Route;
 
@@ -15,9 +16,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('series.index');
+    return view('welcome');
 });
 
 Route::resource('/series', SeriesController::class)
     ->only(['index', 'create', 'store', 'destroy', 'update', 'edit']);
 
+Route::get('/series/{series}/seasons', [SeasonController::class, 'index'])->name('seasons.index');
